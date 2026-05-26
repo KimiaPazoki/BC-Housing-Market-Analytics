@@ -1,0 +1,34 @@
+-- Housing KPI Measures
+
+Starts =
+SUM('CMHC starts historical'[Starts])
+
+Condo Start =
+CALCULATE(
+    SUM('CMHC starts historical'[Starts]),
+    'CMHC starts historical'[Housing Type] = "Condo"
+)
+
+Homeowner Start =
+CALCULATE(
+    SUM('CMHC starts historical'[Starts]),
+    'CMHC starts historical'[Housing Type] = "Homeowner"
+)
+
+Rental Start =
+CALCULATE(
+    SUM('CMHC starts historical'[Starts]),
+    'CMHC starts historical'[Housing Type] = "Rental"
+)
+
+% Condo Start =
+DIVIDE([Condo Start], [Starts])
+
+% Homeowner Start =
+DIVIDE([Homeowner Start], [Starts])
+
+% Rental Start =
+DIVIDE([Rental Start], [Starts])
+
+Ave Vacancy Rate % =
+AVERAGE('CMHC vacancy rates'[Vacancy Rate (%)])
