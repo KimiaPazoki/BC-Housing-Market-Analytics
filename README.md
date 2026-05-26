@@ -61,3 +61,16 @@ Tracks long-term housing starts, vacancy rates, pricing trends, and year-over-ye
 - Starts YoY Change (%)
 - Rolling Average (3Y)
 - Share of Selected Starts (%)
+
+---
+
+## Dashboard Screenshots
+
+### Executive Summary
+![Executive Summary](screenshots/executive-summary-dashboard.png)
+
+### Cluster / Detailed Analysis
+![Cluster Analysis](screenshots/cluster-detailed-analysis-dashboard.png)
+
+### Year-Over-Year & Pricing Trends
+![Trend Analysis](screenshots/year-over-year-pricing-trends-dashboard.png)
