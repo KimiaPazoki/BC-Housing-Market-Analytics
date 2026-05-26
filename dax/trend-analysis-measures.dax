@@ -1,0 +1,35 @@
+-- Trend Analysis Measures
+
+Starts PY =
+CALCULATE(
+    [Starts],
+    SAMEPERIODLASTYEAR(DateTable_[Date])
+)
+
+Starts YoY Change (%) =
+DIVIDE(
+    [Starts] - [Starts PY],
+    [Starts PY]
+)
+
+Rolling Avg (3Y) =
+VAR P3Y =
+    DATESINPERIOD(
+        DateTable_[Date],
+        MAX(DateTable_[Date]),
+        -3,
+        YEAR
+    )
+VAR Total3Y =
+    CALCULATE([Starts], P3Y)
+RETURN
+    DIVIDE(Total3Y, 3)
+
+Share of Selected Starts (%) =
+DIVIDE(
+    SUM('CMHC starts historical'[Starts]),
+    CALCULATE(
+        SUM('CMHC starts historical'[Starts]),
+        REMOVEFILTERS(DateTable_)
+    )
+)
