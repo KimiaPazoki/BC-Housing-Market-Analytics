@@ -1,0 +1,22 @@
+-- Vacancy Analysis Measures
+
+Vacancy Rate with Date =
+CALCULATE(
+    AVERAGE('CMHC vacancy rates'[Vacancy Rate (%)]),
+    USERELATIONSHIP(
+        'CMHC vacancy rates'[Date],
+        DateTable_[Date]
+    )
+)
+
+Prev Year Vacancy Rate =
+CALCULATE(
+    [Vacancy Rate with Date],
+    DATEADD(DateTable_[Date], -1, YEAR)
+)
+
+YoY Vacancy Change (%) =
+VAR Delta =
+    [Vacancy Rate with Date] - [Prev Year Vacancy Rate]
+RETURN
+    DIVIDE(Delta, [Prev Year Vacancy Rate])
